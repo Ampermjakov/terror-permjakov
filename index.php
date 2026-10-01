@@ -4,8 +4,9 @@ require_once __DIR__ . '/terror.php';
 
 $checkResult  = null;
 $checkedQuery = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['q'])) {
-    $checkedQuery = trim($_POST['q']);
+$rawQ = $_POST['q'] ?? $_GET['q'] ?? ''; // ?q= в GET — для ссылки «Подробнее» из портала
+if ($rawQ !== '') {
+    $checkedQuery = trim($rawQ);
     $checkResult  = checkTerror($checkedQuery);
 }
 
@@ -62,7 +63,7 @@ $terrorCount = getTerrorCount();
             <form method="POST" class="search-form" id="checkForm">
                 <input type="text" name="q" class="search-input"
                     placeholder="ФИО или название организации"
-                    value="<?= htmlspecialchars($_POST['q'] ?? '') ?>"
+                    value="<?= htmlspecialchars($checkedQuery) ?>"
                     autocomplete="off" spellcheck="false" required>
                 <button type="submit" class="search-btn" id="checkBtn">Проверить →</button>
             </form>
