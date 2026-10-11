@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/config.php';
+require_once __DIR__.'/http.php';
 
 // Каждая запись рендерится Росфинмониторингом как один <li> внутри
 // <div id="{russian|international}{FL|UL}"><ol class="terrorist-list">.
@@ -7,31 +8,13 @@ require_once __DIR__.'/config.php';
 // единообразен, поэтому парсим по возможности (номер/ФИО/дата рождения),
 // но полный исходный текст сохраняем всегда — поиск ведётся и по нему.
 function fetchTerrorHtml(): array {
-    $outFile = sys_get_temp_dir() . '/terror_fetch_' . bin2hex(random_bytes(8)) . '.html';
-
-    $cmd = escapeshellarg(NODE_BIN) . ' ' . escapeshellarg(TERROR_FETCH_SCRIPT) . ' '
-         . escapeshellarg(TERROR_API_URL) . ' ' . escapeshellarg($outFile);
-
-    $descriptors = [1 => ['pipe', 'w'], 2 => ['pipe', 'w']];
-    $process = @proc_open($cmd, $descriptors, $pipes, __DIR__);
-    if (!is_resource($process)) return ['error' => 'Не удалось запустить обработчик Росфинмониторинга'];
-
-    fclose($pipes[1]);
-    $stderr = stream_get_contents($pipes[2]);
-    fclose($pipes[2]);
-    $exitCode = proc_close($process);
-
-    if ($exitCode !== 0 || !is_file($outFile)) {
-        @unlink($outFile);
-        error_log('Terror fetch-terror.js failed (exit '.$exitCode.'): '.$stderr);
-        return ['error' => 'Не удалось получить данные с портала Росфинмониторинга'];
+    // Промежуточного сертификата российского УЦ в системном хранилище может не быть — берём цепочку из проекта.
+    $r = httpFetch(TERROR_API_URL, ['cafile' => __DIR__ . '/ca/russian-trusted-chain.pem']);
+    if (isset($r['error'])) {
+        error_log('Terror fetch failed: ' . $r['error']);
+        return ['error' => 'Не удалось получить данные с портала Росфинмониторинга: ' . $r['error']];
     }
-
-    $html = file_get_contents($outFile);
-    @unlink($outFile);
-    if (!$html) return ['error' => 'Не удалось получить данные с портала Росфинмониторинга'];
-
-    return ['html' => $html];
+    return ['html' => $r['body']];
 }
 
 function fetchTerrorSections(): array {
