@@ -22,7 +22,7 @@ $terrorCount = getTerrorCount();
     <title>Список террористов и экстремистов — проверка | permjakov.ru</title>
     <meta name="description" content="Проверка по перечню лиц и организаций, причастных к экстремизму или терроризму (Росфинмониторинг).">
     <link rel="icon" href="https://permjakov.ru/amper.svg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?= filemtime(__DIR__ . '/style.css') ?>">
 </head>
 
 <body>
