@@ -34,13 +34,14 @@ $terrorCount = getTerrorCount();
         <div class="topnav-inner">
             <a href="https://permjakov.ru" class="brand"><span>//</span> permjakov.ru</a>
             <div class="nav-tools">
-                <a href="https://pd.permjakov.ru/" class="nav-tool">РНК ПД</a>
+                <a href="https://pd.permjakov.ru/" class="nav-tool">РКН ПД</a>
                 <a href="https://chek.permjakov.ru/" class="nav-tool">РКН Аудит</a>
-                <a href="https://rkn.permjakov.ru" class="nav-tool">РКН Блок</a>
-                <a href="https://cbr.permjakov.ru" class="nav-tool">ЦБ Стоп-лист</a>
-                <a href="https://terror.permjakov.ru" class="nav-tool active">Терроризм</a>
-                <a href="https://agents.permjakov.ru" class="nav-tool">Иноагенты</a>
-                <a href="https://whois.permjakov.ru" class="nav-tool">Whois</a>
+                <a href="https://rkn.permjakov.ru/" class="nav-tool">РКН Блок</a>
+                <a href="https://cbr.permjakov.ru/" class="nav-tool">ЦБ Стоп-лист</a>
+                <a href="https://znak.permjakov.ru/" class="nav-tool">Товарные знаки</a>
+                <a href="https://whois.permjakov.ru/" class="nav-tool">Whois</a>
+                <a href="https://agents.permjakov.ru/" class="nav-tool">Иноагенты</a>
+                <a href="https://terror.permjakov.ru/" class="nav-tool active">Террористы</a>
             </div>
             <button class="nav-burger" id="navBurger" aria-label="Меню">
                 <span></span><span></span><span></span>
@@ -138,26 +139,28 @@ $terrorCount = getTerrorCount();
         <footer class="footer">
             <p>© <?= date('Y') ?> <a href="https://permjakov.ru">permjakov.ru</a> · Данные: <a href="https://www.fedsfm.ru/documents/terr-list" target="_blank" rel="noopener">fedsfm.ru</a></p>
             <div class="footer-links">
-                <a href="https://pd.permjakov.ru/" class="nav-tool">РНК ПД</a>
+                <a href="https://pd.permjakov.ru/" class="nav-tool">РКН ПД</a>
                 <a href="https://chek.permjakov.ru/" class="nav-tool">РКН Аудит</a>
-                <a href="https://rkn.permjakov.ru" class="nav-tool">РКН Блок</a>
-                <a href="https://cbr.permjakov.ru" class="nav-tool">ЦБ Стоп-лист</a>
-                <a href="https://terror.permjakov.ru" class="nav-tool active">Терроризм</a>
-                <a href="https://agents.permjakov.ru" class="nav-tool">Иноагенты</a>
-                <a href="https://whois.permjakov.ru" class="nav-tool">Whois</a>
+                <a href="https://rkn.permjakov.ru/" class="nav-tool">РКН Блок</a>
+                <a href="https://cbr.permjakov.ru/" class="nav-tool">ЦБ Стоп-лист</a>
+                <a href="https://znak.permjakov.ru/" class="nav-tool">Товарные знаки</a>
+                <a href="https://whois.permjakov.ru/" class="nav-tool">Whois</a>
+                <a href="https://agents.permjakov.ru/" class="nav-tool">Иноагенты</a>
+                <a href="https://terror.permjakov.ru/" class="nav-tool active">Террористы</a>
             </div>
         </footer>
     </div>
 
     <div class="nav-mobile" id="navMobile">
         <button class="nav-mobile-close" id="navMobileClose" aria-label="Закрыть">✕</button>
-        <a href="https://pd.permjakov.ru/" class="nav-tool">РНК ПД</a>
+        <a href="https://pd.permjakov.ru/" class="nav-tool">РКН ПД</a>
         <a href="https://chek.permjakov.ru/" class="nav-tool">РКН Аудит</a>
-        <a href="https://rkn.permjakov.ru" class="nav-tool">РКН Блок</a>
-        <a href="https://cbr.permjakov.ru" class="nav-tool">ЦБ Стоп-лист</a>
-        <a href="https://terror.permjakov.ru" class="nav-tool active">Терроризм</a>
-        <a href="https://agents.permjakov.ru" class="nav-tool">Иноагенты</a>
-        <a href="https://whois.permjakov.ru" class="nav-tool">Whois</a>
+        <a href="https://rkn.permjakov.ru/" class="nav-tool">РКН Блок</a>
+        <a href="https://cbr.permjakov.ru/" class="nav-tool">ЦБ Стоп-лист</a>
+        <a href="https://znak.permjakov.ru/" class="nav-tool">Товарные знаки</a>
+        <a href="https://whois.permjakov.ru/" class="nav-tool">Whois</a>
+        <a href="https://agents.permjakov.ru/" class="nav-tool">Иноагенты</a>
+        <a href="https://terror.permjakov.ru/" class="nav-tool active">Террористы</a>
     </div>
 
     <script>
